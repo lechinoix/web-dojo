@@ -1,6 +1,7 @@
 const
   config = require('config'),
-  request = require('request');
+  request = require('request'),
+  userService = require('./userService');
 
 // Get the config const
 
@@ -24,6 +25,12 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
+
+  if (!userService.isUserKnown(senderId)) {
+    userService.addUser(senderId);
+    sendTextMessage(senderID, 'Greetings Gentleman !');
+    return
+  }
 
   if (messageText) {
     switch (messageText) {
