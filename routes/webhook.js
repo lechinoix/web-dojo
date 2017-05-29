@@ -19,7 +19,6 @@ router.post('/', function(req, res, next) {
 
     // Iterate over each entry - there may be multiple if batched
     data.entry.forEach(function(entry) {
-      console.log('Received entry: ', entry);
       var pageID = entry.id;
       var timeOfEvent = entry.time;
 
@@ -32,6 +31,7 @@ router.post('/', function(req, res, next) {
         }
       });
     });
+    res.sendStatus(200);
   }
 });
 
