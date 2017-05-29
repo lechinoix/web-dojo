@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+  console.log('This is a test');
   var data = req.body;
 
   // Make sure this is a page subscription
